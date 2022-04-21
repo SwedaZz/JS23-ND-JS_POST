@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sąrašas</title>
+  </head>
+  <body>
+    <a href="forma.html">NEXT PAGE</a>
+
+    <table>
+      <thead>
+        <tr>
+          <td>Brand</td>
+          <td>Model</td>
+        </tr>
+      </thead>
+      <tbody id="table"></tbody>
+    </table>
+
+    <script>
+      fetch("https://olive-bead-glazer.glitch.me")
+        .then((myData) => myData.json())
+        .then((getData) => {
+          let output = "";
+
+          getData.forEach((item, index) => {
+            // console.log(item.name);
+
+            output += `
+    <tr>
+        <td> ${item.brand} </td>
+        <td>${item.model}</td>
+    </tr>`;
+          });
+
+          document.getElementById("table").innerHTML = output;
+        });
+    </script>
+  </body>
+</html>
